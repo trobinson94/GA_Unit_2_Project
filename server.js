@@ -13,7 +13,8 @@ const cors = require("cors");
 // GET PORT FROM ENV OR DEFAULT PORT
 const PORT = process.env.PORT || "2021";
 const SECRET = process.env.SECRET || "secret"
-const IndexRouter = require("./routes/index.js");
+const BlogRouter = require("./routes/blog.js");
+const AuthRouter = require("./routes/auth.js");
 // Sessions Middleware
 const session = require("express-session"); // create session cookies
 const connect = require("connect-mongodb-session")(session) // store cookies in mongo
@@ -60,7 +61,9 @@ app.use(express.urlencoded({ extended: false })); //parse bodies from form submi
 /////////////////////////////////////
 
 //IndexRouter
-app.use("/", IndexRouter);
+app.use("/", BlogRouter);
+app.use("/blogs", BlogRouter);
+app.use("/auth", AuthRouter)
 
 /////////////////////////////////////
 // App Listener

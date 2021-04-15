@@ -3,7 +3,7 @@
 ////////////////////////////////
 const express = require("express")
 const router = express.Router()
-const indexCtrl = require("../controllers/index")
+const BlogsCtrl = require("../controllers/blogs")
 
 ///////////////////////////////
 // Router Specific Middleware
@@ -13,33 +13,28 @@ const indexCtrl = require("../controllers/index")
 // Router Routes
 ////////////////////////////////
 
-// AUTH related routes
+// Index
+router.get("/", BlogsCtrl.home)
 
-//Signup routes
-router.get("/auth/signup", (req, res) => {
-    res.send("signup get")
+// New
+router.get("/new", (req, res) => {
+    res.render("blogs/new")
 })
 
-router.post("/auth/signup", (req, res) => {
-    res.send("signup post")
+// Delete
+router.delete("/", (req, res) => {
+    res.render("index")
 })
 
-//Login routes
-router.get("/auth/login", (req, res) => {
-    res.send("login get")
+// Update
+router.put("/", (req, res) => {
+    res.render("index")
 })
 
-router.post("/auth/login", (req, res) => {
-    res.send("login post")
-})
+// Create
+router.post("/", BlogsCtrl.create)
 
-// Logout route
-router.get("/auth/logout", (req, res) => {
-    res.send("logout")
-})
-
-/// NORMAL routes
-
+// Show
 router.get("/", (req, res) => {
     res.render("index")
 })
