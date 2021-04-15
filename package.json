@@ -19,11 +19,21 @@
     "ejs": "^3.1.6",
     "express": "^4.17.1",
     "express-session": "^1.17.1",
+    "install": "^0.13.0",
     "mercedlogger": "^1.0.1",
     "method-override": "^3.0.0",
-    "mongoose": "^5.11.20",
+    "mongoose": "^5.12.3",
     "morgan": "^1.10.0",
-    "nodemon": "^2.0.7"
+    "nodemon": "^2.0.7",
+    "npm": "^7.9.0",
+    "sudo": "^1.0.3"
   },
-  "devDependencies": {}
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/trobinson94/GA_Unit_2_Project.git"
+  },
+  "bugs": {
+    "url": "https://github.com/trobinson94/GA_Unit_2_Project/issues"
+  },
+  "homepage": "https://github.com/trobinson94/GA_Unit_2_Project#readme"
 }
