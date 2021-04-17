@@ -14,12 +14,29 @@ const home = async (req, res) => {
     res.render("homeIn")
 }
 
+// New blog post
+const newBlog = async (req, res) => {
+    res.render("views/blogs/new.ejs")
+}
+
+// Delete Blog
+
+
+// Update Blog post
+
+
 // Create: Create a new blog post
 const create = async (req, res) => {
-    res.render("create")
+    // create neew item
+    await Blog.create(req.body)
+    // res.render("create")
+    res.send(req.body)
 }
+
+// Show: Shows blog post
 
 module.exports = {
     home,
+    newBlog,
     create,
 }

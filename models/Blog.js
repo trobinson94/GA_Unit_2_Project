@@ -19,8 +19,9 @@ const UserSchema = new Schema (
     }
 )
 
-// The Blog Schema
-
 // The User Model
 
+const User = model("User", UserSchema)
+
 // Export the User Model
+module.exports = User

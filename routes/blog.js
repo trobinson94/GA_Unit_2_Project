@@ -1,6 +1,7 @@
 ///////////////////////////////
 // Import Router
 ////////////////////////////////
+const { render } = require("ejs")
 const express = require("express")
 const router = express.Router()
 const BlogsCtrl = require("../controllers/blogs")
@@ -22,12 +23,12 @@ router.get("/new", (req, res) => {
 })
 
 // Delete
-router.delete("/", (req, res) => {
+router.delete("/blogs/:id", (req, res) => {
     res.render("index")
 })
 
 // Update
-router.put("/", (req, res) => {
+router.put("/blogs/:id", (req, res) => {
     res.render("index")
 })
 
