@@ -8,7 +8,12 @@
         <!-- THE HEADER TAG PARTIAL -->
         <%- include("../partials/header") %>
         <main>
-            Login
+            <h1>User Login</h1>
+            <form action="/auth/login" method="post">
+                <input type="text" placeholder="username" name="username" />
+                <input type="password" placeholder="password" name="password" />
+                <input type="submit" value="Login" />
+            </form>
 
         </main>
         <!-- THE HEAD TAG PARTIAL -->
