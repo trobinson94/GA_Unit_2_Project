@@ -51,9 +51,7 @@ router.get("/", (req, res) => {
 
 // If User is logged in
 router.get("/home", isAuthorized, async (req, res) => {
-    // get updated user
     const user = await User.findOne({ username: req.user.username })
-    // render template passing it list of goals
     res.render("homeIn", {
         blogs: user.blogs,
     })
