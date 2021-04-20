@@ -15,5 +15,63 @@ main {
 textarea {
     width: 100%;
     max-width: 100%;
-    height: 1000px;
+    height: 500px;
+}
+
+.home-btns {
+    text-align: center;
+}
+
+.home-out {
+    text-align: center;
+    margin-bottom: 75px;
+}
+
+.signup-btn,
+.login-btn {
+    width: 150px;
+    height: 60px;
+    margin-left: 50px;
+    margin-right: 50px;
+    border-radius: 10px;
+}
+
+.signup-text,
+.login-text {
+    text-align: center;
+}
+
+.hero {
+    background-color: #DBD3D8;
+    padding: 45px;
+}
+
+.navbar {
+    background-color: #D77A61;
+    padding: 20px;
+}
+
+footer {
+    height: 100px;
+    background-color: #223843;
+    padding-top: 30px;
+}
+
+.footer-text {
+    color: white;
+    margin: auto;
+}
+
+.logo {
+    font-family: 'Gloria Hallelujah', cursive;
+}
+
+p,
+h1,
+h2 {
+    font-family: 'Open Sans', sans-serif;
+}
+
+.post-btn {
+    display: inline;
 }

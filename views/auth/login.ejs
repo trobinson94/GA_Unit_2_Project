@@ -7,15 +7,24 @@
     <body>
         <!-- THE HEADER TAG PARTIAL -->
         <%- include("../partials/header") %>
-        <main>
-            <h1>User Login</h1>
-            <form action="/auth/login" method="post">
-                <input type="text" placeholder="username" name="username" />
-                <input type="password" placeholder="password" name="password" />
-                <input type="submit" value="Login" />
-            </form>
 
-        </main>
+        <div class="hero is-medium">
+            <div class="hero-body">
+                <div class="home-out">
+                    <h1 class="title logo">BlogSpec</h1>
+                </div>
+
+                <div class="login-text">
+                    <h1>User Login</h1>
+                    <form action="/auth/login" method="post">
+                        <input type="text" placeholder="username" name="username" />
+                        <input type="password" placeholder="password" name="password" />
+                        <input type="submit" value="Login" /> 
+                    </form>
+                </div>
+
+            </div>
+        </div>
         <!-- THE HEAD TAG PARTIAL -->
         <%- include("../partials/footer") %>
     </body>

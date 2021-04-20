@@ -7,11 +7,18 @@
     <body>
         <!-- THE HEADER TAG PARTIAL -->
         <%- include("partials/header") %>
-        <main>
-            <a href="blogs/auth/signup"><button class="button">SIGNUP</button></a>
-            <a href="blogs/auth/login"><button class="button">LOGIN</button></a>
-
-        </main>
+            <div class="hero is-medium">
+                <div class="hero-body">
+                    <div class="home-out">
+                        <h1 class="title logo">BlogSpec</h1>
+                        <h2 class="subtitle">Blogging your way</h2>
+                    </div>
+                    <div class="home-btns">
+                        <a href="blogs/auth/signup"><button class="button is-large signup-btn">SIGNUP</button></a>
+                        <a href="blogs/auth/login"><button class="button is-large login-btn">LOGIN</button></a>
+                    </div>
+                </div>
+            </div>
         <!-- THE HEAD TAG PARTIAL -->
         <%- include("partials/footer") %>
     </body>

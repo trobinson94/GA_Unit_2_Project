@@ -8,12 +8,17 @@
         <!-- THE HEADER TAG PARTIAL -->
         <%- include("../partials/header") %>
         <main>
-            <h1>Update Blog Post</h1>
-            <form action="/blogs/<%= blog._id %>?_method=PUT" method="POST">
-                Title: <input type="text" placeholder="title" value="<%= blog.title %>" name="title" /><br/>
-                Body: <textarea type="text" placeholder="body"name="body"><%= blog.body %></textarea><br/>
-                <input type="submit" name="" value="Update Post"/>
-            </form>
+
+            <div class="columns">
+                <div class="column is-four-fifths">
+                <h1 class="title is-3">Update Blog Post</h1>
+                <form action="/blogs/<%= blog._id %>?_method=PUT" method="POST">
+                    Title: <input type="text" placeholder="title" value="<%= blog.title %>" name="title" /><br/>
+                    Body: <textarea type="text" placeholder="body"name="body"><%= blog.body %></textarea><br/>
+                    <input type="submit" name="" value="Update Post"/>
+                </form>
+                </div>
+                </div>
 
         </main>
         <!-- THE HEAD TAG PARTIAL -->
