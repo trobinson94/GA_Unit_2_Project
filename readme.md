@@ -35,3 +35,11 @@
 - sucessfully creating routes to two different home pages depending on if a user is logged in or not
 
 - accessing the blog posts within each user object in order to display them on the page
+
+## Next steps
+
+- Add a timestamp to each blog post and on the index page
+
+- Work on more polished styling
+
+- Create routes to the "About" and "Contact" pages
