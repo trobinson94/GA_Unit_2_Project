@@ -36,13 +36,27 @@ const isAuthorized = (req, res, next) => {
 // Router Specific Middleware
 ////////////////////////////////
 
+router.use(addUserToRequest)
+
 ///////////////////////////////
 // Router Routes
 ////////////////////////////////
 
 // Index
+
+// If No user logged in
 router.get("/", (req, res) => {
-    res.render("homeIn")
+    res.render("homeOut")
+})
+
+// If User is logged in
+router.get("/home", isAuthorized, async (req, res) => {
+    // get updated user
+    const user = await User.findOne({ username: req.user.username })
+    // render template passing it list of goals
+    res.render("homeIn", {
+        blogs: user.blogs,
+    })
 })
 
 // AUTH related routes
@@ -79,18 +93,14 @@ router.post("/auth/login", async (req, res) => {
         const user = await User.findOne({ username: req.body.username })
         if (user) {
             // check if passwords match
-            console.count()
             const result = await bcrypt.compare(req.body.password, user.password)
             if (result) {
                 // creat user session property
-                console.count() 
                 req.session.userId = user._id
-                // redirect to /homeIn
-                console.count() 
-                res.redirect("homeIn")
+                // redirect to /homeIn 
+                res.redirect("/blogs/home")
             } else {
                 // send error if password doesnt match
-                console.count() 
                 res.json({ error: "Passwords do not match. Please try again"})
             }
         } else {
@@ -115,32 +125,74 @@ router.get("/auth/logout", (req, res) => {
 // Blog Routes
 ///////////////////////////
 
+// View all blog posts
+router.get("/index" , isAuthorized, async (req,res) => {
+    const user = await User.findOne({ username: req.user.username })
+    res.render("blogs/index", {
+        blogs: user.blogs,
+    })
+
+})
+
 // New
-router.get("/new", (req, res) => {
+router.get("/new", isAuthorized, (req, res) => {
     res.render("blogs/new")
 })
 
 // Delete
-router.delete("/:id", (req, res) => {
-    res.render("index")
+router.delete("/:id", isAuthorized, async (req, res) => {
+    const user = await User.findOne({ username: req.user.username })
+    const id = req.params.id
+    const index = req.user.blogs.findIndex((blog) => `${blog._id}` === id)
+    req.user.blogs.splice(index, 1)
+    req.user.save()
+    res.redirect("/blogs/index")
 })
 
 // Update
-router.put("/blogs/:id", (req, res) => {
-    res.render("index")
+router.put("/:id", isAuthorized, async (req, res) => {
+    const user = await User.findOne({ username: req.user.username })
+    const id = req.params.id
+    const index = req.user.blogs.findIndex((blog) => `${blog._id}` === id)
+    req.user.blogs[index].title = req.body.title
+    req.user.blogs[index].body = req.body.body
+    req.user.save()
+    res.redirect(`/blogs/${id}`)
 })
 
 // Create
-router.post("/", async (req, res) => {
-    // create neew item
-    await Blog.create(req.body)
-    // res.render("create")
-    res.send(req.body)
+router.post("/", isAuthorized,  async (req, res) => {
+    // fetch up to date user
+    const user = await User.findOne({ username: req.user.username })
+    // push new blog and save
+    user.blogs.push(req.body)
+    await user.save()
+    //redirect back to home page
+    res.redirect("blogs/home")
 })
 
-// Show
-router.get("/", (req, res) => {
-    res.render("index")
+// Edit
+router.get("/:id/edit", isAuthorized, async (req, res) => {
+    const user = await User.findOne({ username: req.user.username })
+    const id = req.params.id
+    const index = req.user.blogs.findIndex((blog) => `${blog._id}` === id)
+    const blog = req.user.blogs[index]
+    console.log(blog)
+    res.render("blogs/edit", {
+        blog
+    })
+})
+
+// Show (HomeIn)
+router.get("/:id", isAuthorized, async (req, res) => {
+    const user = await User.findOne({ username: req.user.username })
+    const id = req.params.id
+    const index = req.user.blogs.findIndex((blog) => `${blog._id}` === id)
+    const blog = req.user.blogs[index]
+    console.log(blog)
+    res.render("blogs/show", {
+        blog
+    })
 })
 
 ///////////////////////////////

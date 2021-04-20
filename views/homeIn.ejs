@@ -8,8 +8,15 @@
         <!-- THE HEADER TAG PARTIAL -->
         <%- include("partials/header") %>
         <main>
-            Home (signed In)
+            <% for (let i = 0; i < 3; i++) { %>
+            
+                <article>
+                    <a href="/blogs/<%=blogs[i].id %>">
+                        <h2><%= blogs[i].title %></h2>
+                    </a>
+                </article>
 
+            <% } %>
         </main>
         <!-- THE HEAD TAG PARTIAL -->
         <%- include("partials/footer") %>

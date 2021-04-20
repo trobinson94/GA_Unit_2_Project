@@ -8,7 +8,16 @@
         <!-- THE HEADER TAG PARTIAL -->
         <%- include("../partials/header") %>
         <main>
-            List of all Blogs index
+            <h1>All Posts</h1>
+            <% for (let i = 0; i < blogs.length; i++) { %>
+            
+                <article>
+                    <a href="/blogs/<%=blogs[i].id %>">
+                        <h2><%= blogs[i].title %></h2>
+                    </a>
+                </article>
+
+            <% } %>
 
         </main>
         <!-- THE HEAD TAG PARTIAL -->

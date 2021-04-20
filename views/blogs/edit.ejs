@@ -8,7 +8,12 @@
         <!-- THE HEADER TAG PARTIAL -->
         <%- include("../partials/header") %>
         <main>
-            Edit Blog Post
+            <h1>Update Blog Post</h1>
+            <form action="/blogs/<%= blog._id %>?_method=PUT" method="POST">
+                Title: <input type="text" placeholder="title" value="<%= blog.title %>" name="title" /><br/>
+                Body: <textarea type="text" placeholder="body"name="body"><%= blog.body %></textarea><br/>
+                <input type="submit" name="" value="Update Post"/>
+            </form>
 
         </main>
         <!-- THE HEAD TAG PARTIAL -->

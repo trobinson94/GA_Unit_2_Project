@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <!-- THE HEAD TAG PARTIAL -->
+    <%- include("../partials/head") %>
+
+    <body>
+        <!-- THE HEADER TAG PARTIAL -->
+        <%- include("../partials/header") %>
+        <main>
+
+              <h2><%= blog.title %></h2>
+              <p><%= blog.body %></p>
+              <a href="/blogs/<%= blog._id %>/edit"><button>Edit Post</button></a>
+
+
+            <form action="/blogs/<%= blog._id %>?_method=delete" method="post">
+                <input class="button" type="submit" value="Delete post" />
+            </form>
+        </main>
+        <!-- THE HEAD TAG PARTIAL -->
+        <%- include("../partials/footer") %>
+    </body>
+</html>

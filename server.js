@@ -39,21 +39,21 @@ app.use(morgan("tiny")); // Request Logging
 app.use(express.json()); // Parse json bodies
 app.use(express.urlencoded({ extended: false })); //parse bodies from form submissions
 // SESSION MIDDLEWARE REGISTRATION (adds req.session property)
-// app.use(
-//   session({
-//     secret: SECRET,
-//     cookie: {
-//       maxAge: 1000 * 60 * 60 * 24 * 7, // 1 week
-//     },
-//     saveUninitialized: true, // create session regardless of changes
-//     resave: true, //save regardless of changes
-//     store: new connect({
-//       uri: process.env.MONGODB_URL,
-//       databaseName: "sessions",
-//       collection: "sessions",
-//     }),
-//   })
-// );
+app.use(
+  session({
+    secret: SECRET,
+    cookie: {
+      maxAge: 1000 * 60 * 60 * 24 * 7, // 1 week
+    },
+    saveUninitialized: true, // create session regardless of changes
+    resave: true, //save regardless of changes
+    store: new connect({
+      uri: process.env.MONGODB_URL,
+      databaseName: "sessions",
+      collection: "sessions",
+    }),
+  })
+);
 
 /////////////////////////////////////
 // Routes and Routers
