@@ -8,13 +8,16 @@
         <!-- THE HEADER TAG PARTIAL -->
         <%- include("../partials/header") %>
         <main>
-            <h1>Create New Blog Post</h1>
+            <div class="columns">
+            <div class="column is-four-fifths">
+            <h1 class="title is-3">Create New Blog Post</h1>
             <form action="/blogs" method="POST">
-                Title: <input type="text" name="title" /><br/>
+                Title: <input type="text" name="title" class="new-title"/><br/>
                 Body: <textarea type="text" name="body"></textarea><br/>
                 <input type="submit" name="" value="Publish Post"/>
             </form>
-            
+            </div>
+            </div>
         </main>
         <!-- THE HEAD TAG PARTIAL -->
         <%- include("../partials/footer") %>

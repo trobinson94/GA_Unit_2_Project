@@ -7,16 +7,25 @@
     <body>
         <!-- THE HEADER TAG PARTIAL -->
         <%- include("partials/header") %>
-        <main>
-            <% for (let i = 0; i < 3; i++) { %>
-            
-                <article>
-                    <a href="/blogs/<%=blogs[i].id %>">
-                        <h2><%= blogs[i].title %></h2>
-                    </a>
-                </article>
+        <main class="is-align-content-center">
+            <div class="columns">
+            <div class="column is-two-thirds">
+                <% for (let i = 0; i < 3; i++) { %>
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="content">
+                                <a href="/blogs/<%=blogs[i].id %>">
+                                    <h2><%= blogs[i].title %></h2>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
 
-            <% } %>
+                <% } %>
+            </div>
+
+            <%- include("partials/bio") %>
+        </div>
         </main>
         <!-- THE HEAD TAG PARTIAL -->
         <%- include("partials/footer") %>

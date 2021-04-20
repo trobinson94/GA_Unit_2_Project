@@ -116,7 +116,7 @@ router.get("/auth/logout", (req, res) => {
     // remove the userId property from the session
     req.session.userId = null
     // redirect back to main page
-    res.redirect("homeOut")
+    res.redirect("/blogs/homeOut")
 })
 
 ////////////////////////////
